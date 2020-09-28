@@ -13,6 +13,7 @@ import './App.css';
 // import Welcome from './components/Welcome'
 // import Message from './components/Message'
 // import Counter from './components/Counter';
+import logo from './ngoctrinh.jpg'; 
 
 
 
@@ -24,71 +25,70 @@ class App extends React.Component {
       apiResponse:"",
       dataJav:[
         { stt: 1,
-          name: "Maria Ozawa",
-          // name: "Bùi Văn Tèo",
-          image: "image1.com",
-          comment: "xyz giỏi vl",
-          link:["link1","link2","link3"]
+          title: "big tits bên hoa huệ",
+          dvd_id: "Jav123",
+          release_date : "20 Sep 2020",
+          content_id: "onsg00027",
+          image: "https://www.flickr.com/photos/tapchianhdep/15703192727/sizes/l/",
+          duration: 120,
+          studio : "JAV studio",
+          catagories: ["big tit","big ass","big pennis"],
+          link:"link_1"
         },
         { stt: 2,
-          name: "Maria Ozawa",
-          // name: "Bùi Văn Tèo",
+          title: "big tits",
+          dvd_id: "Jav123",
+          release_date : "20 Sep 2020",
+          content_id: "onsg00027",
           image: "image1.com",
-          comment: "xyz giỏi vl",
-          link:["link1","link2","link3"]
+          duration: 120,
+          studio : "JAV studio",
+          catagories: ["big tit","big ass","big pennis"],
+          link:"link_2"
         },
-        {
-          stt: 3,
-          name: "Maria Ozawa",
-          // name: "Bùi Văn Tèo",
+        { stt: 3,
+          title: "big tits",
+          dvd_id: "Jav123",
+          release_date : "20 Sep 2020",
+          content_id: "onsg00027",
           image: "image1.com",
-          comment: "xyz giỏi vl",
-          link:["link1","link2","link3"]
-        }
-        ,
-        { stt: 1,
-          name: "Maria Ozawa",
-          // name: "Bùi Văn Tèo",
-          image: "image1.com",
-          comment: "xyz giỏi vl",
-          link:["link1","link2","link3"]
+          duration: 120,
+          studio : "JAV studio",
+          catagories: ["big tit","big ass","big pennis"],
+          link:"link_1"
         },
-        { stt: 2,
-          name: "Maria Ozawa",
-          // name: "Bùi Văn Tèo",
+        { stt: 4,
+          title: "big tits",
+          dvd_id: "Jav123",
+          release_date : "20 Sep 2020",
+          content_id: "onsg00027",
           image: "image1.com",
-          comment: "xyz giỏi vl",
-          link:["link1","link2","link3"]
+          duration: 120,
+          studio : "JAV studio",
+          catagories: ["big tit","big ass","big pennis"],
+          link:"link_1"
         },
-        {
-          stt: 3,
-          name: "Maria Ozawa",
-          // name: "Bùi Văn Tèo",
+        { stt: 5,
+          title: "big tits",
+          dvd_id: "Jav123",
+          release_date : "20 Sep 2020",
+          content_id: "onsg00027",
           image: "image1.com",
-          comment: "xyz giỏi vl",
-          link:["link1","link2","link3"]
+          duration: 120,
+          studio : "JAV studio",
+          catagories: ["big tit","big ass","big pennis"],
+          link:"link_1"
         },
-        { stt: 1,
-          name: "Maria Ozawa",
-          // name: "Bùi Văn Tèo",
+        { stt: 6,
+          title: "big tits",
+          dvd_id: "Jav123",
+          release_date : "20 Sep 2020",
+          content_id: "onsg00027",
           image: "image1.com",
-          comment: "xyz giỏi vl",
-          link:["link1","link2","link3"]
-        },
-        { stt: 2,
-          name: "Maria Ozawa",
-          // name: "Bùi Văn Tèo",
-          image: "image1.com",
-          comment: "xyz giỏi vl",
-          link:["link1","link2","link3"]
-        },
-        {
-          stt: 3,
-          name: "Maria Ozawa",
-          // name: "Bùi Văn Tèo",
-          image: "image1.com",
-          comment: "xyz giỏi vl",
-          link:["link1","link2","link3"]
+          duration: 120,
+          studio : "JAV studio",
+          catagories: ["big tit","big ass","big pennis"],
+          link:"link_1"
         }
       ],
       link:"http://www.xvideos3.com/video25209901/amateur_with_natural_huge_tits_outdoor_fucking"
@@ -101,8 +101,11 @@ class App extends React.Component {
       document.getElementById("hide_1").style.display="none";
     
   }
-  unhide_item= ()=>{
+  unhide_item(link){
+    alert(link);
     document.getElementById("hide_1").style.display="block";
+    document.getElementById("video").src = link;
+    
     // alert("unhide");
   }
 
@@ -235,47 +238,53 @@ class App extends React.Component {
               </div>
               <hr/>
               <div className="table_content">
-                <table>
-                  <tr>
-                    <th>Hạng</th>
-                    <th>Diễn viên</th>
-                    <th>Đánh giá chung</th>
-                    <th>Top phim nổi bật</th>
-                  </tr>
-                  <tr>
-                    <td>0</td>
-                    <td>
-                      <p>Mazia Ozawa <img src="img_girl.jpg" alt="Girl in a jacket" width="500" height="600"/></p>
-                      
-                    </td>
-                    <td>Phim cũng bình thường thôi</td>
-                    <td class="abc">
-                      <p onClick={this.unhide_item} value="link">link 1</p>
-                      <p>link 2</p>
-                      <p>link 3</p>
-
-
-                    </td>
-                  </tr>
-                  {this.state.dataJav.map(item =>(
-                    <tr>
-                      <td>{item.stt}</td>
-                      <td>
-                        <p className="image_idol">{item.name} <img src="https://img.onl/B9QLA7"  alt="Girl in a jacket" width="50px" height="50px"/></p>
+               
+                {this.state.dataJav.map(item=>(
+                  <div className="item_content">
+                    <div className="item_title">#{item.stt}: {item.title.charAt(0).toUpperCase() + item.title.slice(1)}</div>
+                    <div className="image_item flex">
+                      <div className="image flex">
+                        <div className="bd_imagae">
+                        <img src={logo} alt="anh" width="148px" height="152px"/>
+                        </div>
+                        <div>
+                          <button className="preview_bt" value={item.link} onClick={() =>this.unhide_item(item.link)}>Preview</button>
+                        </div>
                         
-                      </td>
-                      <td>{item.comment}</td>
-                      <td class="abc">
+                      </div>
+                      <div className="content_jav">
+                        <p className="jav_elements">
+                          <label className="thead">DVD ID: </label>
+                          <label className="text_data">{item.dvd_id}</label>
+                        </p>
+                        <p className="jav_elements">
+                          <label className="thead">Content ID: </label>
+                          <label className="text_data">{item.content_id}</label>
+                        </p>
+                        <p className="jav_elements">
+                          <label className="thead">Release Date: </label>
+                          <label className="text_data">{item.release_date}</label>
+                        </p>
+                        <p className="jav_elements">
+                          <label className="thead">Duration: </label>
+                          <label className="text_data">{item.duration}</label>
+                        </p>
+                        <p className="jav_elements">
+                          <label className="thead">Studio: </label>
+                          <label className="text_data">{item.studio}</label>
+                        </p>
+                        <p className="jav_elements">
+                          <label className="thead">Categories: </label>
+                          <label className="text_data catalog">{item.catagories.map(cata=>(cata ))}</label>
+                        </p>
                         
-                        {item.link.map(item2=>(
-                          <p onClick={this.unhide_item} value={item2}>{item2}</p>
-                        ))}
-
-
-                      </td>
-                    </tr>
-                  ))}
-                </table>
+                      </div>
+                    </div>
+                    <hr/>
+                  </div>
+                  
+                ))}
+                
 
               </div>
             </div>
@@ -287,7 +296,7 @@ class App extends React.Component {
             <i className="fa fa-times" id="cancel_item" onClick={this.hide_item}></i>
             </div>
             <video controls autoPlay>
-                <source src=""/>
+                <source id="video" src=""/>
             </video>
             </div>
           </div>
