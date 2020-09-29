@@ -102,7 +102,7 @@ class App extends React.Component {
     
   }
   unhide_item(link){
-    alert(link);
+    // alert(link);
     document.getElementById("hide_1").style.display="block";
     document.getElementById("video").src = link;
     
@@ -153,21 +153,6 @@ class App extends React.Component {
     return (
       <div className="App">
         
-        {/* <Greet name="Nguyen Ta Thuong">
-          <button>Like</button>
-        </Greet>
-        <Greet name="Đinh Thi Ngoc Mai"/>
-        <Welcome name="Ahihi"></Welcome> */}
-
-        {/* <Router>
-          <div><Link to={'/abc'} className="nav-link">About</Link></div>
-          <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/contact' component={Contact} />
-              <Route path='/abc' component={Message} />
-          </Switch>
-        </Router> */}
-        
         <input type="checkbox" id="check"></input>
         <label htmlFor="check">
           <i className="fas fa-bars" id="btn"></i>
@@ -190,7 +175,8 @@ class App extends React.Component {
         </div>
         
         
-        <section>
+      
+      <section>
         <Router>
         <Switch>
               <Route exact path="/">
@@ -301,12 +287,13 @@ class App extends React.Component {
             </div>
           </div>
           <div className="footer" id="year">
-            
+            Copyright @{this.time} by HoangNP
             
           </div>
 
         </div>
         </section>
+      
         
       </div>
 
