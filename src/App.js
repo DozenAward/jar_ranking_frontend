@@ -138,17 +138,30 @@ class App extends React.Component {
     document.getElementById("year").innerHTML="Copyright " +time.getFullYear()+" by HoangNP";
     document.getElementById("update_time").innerHTML= time;
 
+
+    $('.item_content').each(function(){
+      if (parseInt($(this).attr('value')) > parseInt($('#select_option').val())) {
+        $(this).hide()
+      }
+
+    });
+
     $(document).ready(function(){
+        
+
+
+
+
         $('#select_option').change(function(){
           // alert($('#select_option').val());
           // document.get
           var range_id= $('#select_option').val();
           // $('item_content').attr('value') >=range_id;
-          alert(range_id);
+          // alert(range_id);
             // $('item_content').parent.hide();
           $('.item_content').each(function(){
             // alert($(this).attr('value'));
-            if ($(this).attr('value') >range_id) {
+            if (parseInt($(this).attr('value')) > parseInt(range_id)) {
               $(this).hide()
             }
             else{
@@ -223,8 +236,8 @@ class App extends React.Component {
                   <div className="option_content">
                     <div>
                       <select id="select_option">
-                        <option value="5">Top 20 actor</option>
-                        <option value="2" defaultChecked="checked">Top 10</option>
+                        <option value="10" defaultChecked="checked">Top 10 Movie</option>
+                        <option value="20">Top 20 Movie</option>
                       </select>
                     </div>
                     <div>
