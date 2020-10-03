@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import $ from "jquery";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,11 +10,10 @@ import {
 } from "react-router-dom";
 // import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
-// import  Greet  from './components/Greet';
-// import Welcome from './components/Welcome'
-// import Message from './components/Message'
-// import Counter from './components/Counter';
+import TableContent from './components/TableContent';
+import Video from './components/Video';
 import logo from './ngoctrinh.jpg'; 
+import titanic from './videoplayback.mp4';
 
 
 
@@ -33,7 +33,7 @@ class App extends React.Component {
           duration: 120,
           studio : "JAV studio",
           catagories: ["big tit","big ass","big pennis"],
-          link:"link_1"
+          link:titanic
         },
         { stt: 2,
           title: "big tits",
@@ -44,7 +44,7 @@ class App extends React.Component {
           duration: 120,
           studio : "JAV studio",
           catagories: ["big tit","big ass","big pennis"],
-          link:"link_2"
+          link:titanic
         },
         { stt: 3,
           title: "big tits",
@@ -96,18 +96,12 @@ class App extends React.Component {
   // this.handleClick= this.hide_item();
   }
 
-  hide_item= ()=>{
-    // alert("hide");
-      document.getElementById("hide_1").style.display="none";
+  // hide_item= ()=>{
+  //   // alert("hide");
+  //     document.getElementById("hide_1").style.display="none";
     
-  }
-  unhide_item(link){
-    // alert(link);
-    document.getElementById("hide_1").style.display="block";
-    document.getElementById("video").src = link;
-    
-    // alert("unhide");
-  }
+  // }
+  
 
   callAPI(){
     fetch("http://localhost:9000/testAPI")
@@ -128,16 +122,42 @@ class App extends React.Component {
 
   componentDidMount () {
     const script = document.createElement("script");
-
     script.src = "https://kit.fontawesome.com/a076d05399.js";
     script.async = true;
 
+    // const script2=document.createElement("script");
+    // script2.src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js";
+    // script2.async = true;
+    // <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     document.body.appendChild(script);
+    // document.body.appendChild(script2);
     var time= new Date();
     var year = time.getFullYear();
     console.log(year);
     document.getElementById("year").innerHTML="Copyright " +time.getFullYear()+" by HoangNP";
     document.getElementById("update_time").innerHTML= time;
+
+    $(document).ready(function(){
+        $('#select_option').change(function(){
+          // alert($('#select_option').val());
+          // document.get
+          var range_id= $('#select_option').val();
+          // $('item_content').attr('value') >=range_id;
+          alert(range_id);
+            // $('item_content').parent.hide();
+          $('.item_content').each(function(){
+            // alert($(this).attr('value'));
+            if ($(this).attr('value') >range_id) {
+              $(this).hide()
+            }
+            else{
+              $(this).show()
+            }
+          });
+        });
+      });
+    
 
 
     
@@ -177,7 +197,7 @@ class App extends React.Component {
         
       
       <section>
-        <Router>
+        {/* <Router>
         <Switch>
               <Route exact path="/">
                 <Home name="thưởng"/>
@@ -189,33 +209,26 @@ class App extends React.Component {
                 <Dashboard />
               </Route>
             </Switch>
-        </Router>
-        {/* <Message />
-        <Counter /> */}
-        {/* <p>{this.state.apiResponse}</p> */}
+        </Router> */}
+       
 
         <div className="container">
-          <div>
-            <div></div>
-            <div>
-              {/* <input type="search"></input> */}
-            </div>
-          </div>
+          
           <div>
             <div className="content">
               <div className="head_content">
-                <div>Ranking Top Jav Actors</div>
+                <div className="title_name">Ranking Top Jav Actors</div>
                 <hr/>
                 <div>
                   <div className="option_content">
                     <div>
-                      <select>
-                        <option value="20">Top 20 actor</option>
-                        <option value="10" defaultChecked="checked">Top 10</option>
+                      <select id="select_option">
+                        <option value="5">Top 20 actor</option>
+                        <option value="2" defaultChecked="checked">Top 10</option>
                       </select>
                     </div>
                     <div>
-                      <p>Last update at:</p>
+                      <p className="aqua">Last update at:</p>
                       <p id="update_time"></p>
                     </div>
                   </div>
@@ -223,69 +236,10 @@ class App extends React.Component {
 
               </div>
               <hr/>
-              <div className="table_content">
-               
-                {this.state.dataJav.map(item=>(
-                  <div className="item_content">
-                    <div className="item_title">#{item.stt}: {item.title.charAt(0).toUpperCase() + item.title.slice(1)}</div>
-                    <div className="image_item flex">
-                      <div className="image flex">
-                        <div className="bd_imagae">
-                        <img src={logo} alt="anh" width="148px" height="152px"/>
-                        </div>
-                        <div>
-                          <button className="preview_bt" value={item.link} onClick={() =>this.unhide_item(item.link)}>Preview</button>
-                        </div>
-                        
-                      </div>
-                      <div className="content_jav">
-                        <p className="jav_elements">
-                          <label className="thead">DVD ID: </label>
-                          <label className="text_data">{item.dvd_id}</label>
-                        </p>
-                        <p className="jav_elements">
-                          <label className="thead">Content ID: </label>
-                          <label className="text_data">{item.content_id}</label>
-                        </p>
-                        <p className="jav_elements">
-                          <label className="thead">Release Date: </label>
-                          <label className="text_data">{item.release_date}</label>
-                        </p>
-                        <p className="jav_elements">
-                          <label className="thead">Duration: </label>
-                          <label className="text_data">{item.duration}</label>
-                        </p>
-                        <p className="jav_elements">
-                          <label className="thead">Studio: </label>
-                          <label className="text_data">{item.studio}</label>
-                        </p>
-                        <p className="jav_elements">
-                          <label className="thead">Categories: </label>
-                          <label className="text_data catalog">{item.catagories.map(cata=>(cata ))}</label>
-                        </p>
-                        
-                      </div>
-                    </div>
-                    <hr/>
-                  </div>
-                  
-                ))}
-                
-
-              </div>
+              <TableContent tb_dataJav={this.state.dataJav}/>
             </div>
           </div>
-          <div className="hide_1" id="hide_1">
-            
-            <div className="hide_2">
-            <div>
-            <i className="fa fa-times" id="cancel_item" onClick={this.hide_item}></i>
-            </div>
-            <video controls autoPlay>
-                <source id="video" src=""/>
-            </video>
-            </div>
-          </div>
+          <Video/>
           <div className="footer" id="year">
             Copyright @{this.time} by HoangNP
             
@@ -334,5 +288,5 @@ function Dashboard() {
 
 
 
-
+// export default this.hide_item;
 export default App;
